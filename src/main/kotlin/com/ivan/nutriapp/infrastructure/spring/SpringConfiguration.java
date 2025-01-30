@@ -6,15 +6,8 @@ import com.ivan.nutriapp.infrastructure.resources.FoodResourceAdapter;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.retry.annotation.EnableRetry;
-import org.springframework.retry.policy.ExceptionClassifierRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
-import org.springframework.web.client.RestOperations;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Set;
 
 @Configuration @EnableRetry
 public class SpringConfiguration {

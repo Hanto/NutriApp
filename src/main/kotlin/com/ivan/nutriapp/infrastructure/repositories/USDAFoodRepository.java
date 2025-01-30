@@ -25,7 +25,7 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 public class USDAFoodRepository {
 
-    private final RestTemplateWithRetry restTemplate;
+    private final RestOperations restTemplate;
     private final USDAFoodConfiguration configuration;
     private final FoodEntityAdapter adapter;
     private final Logger log = LoggerFactory.getLogger(USDAFoodRepository.class);
