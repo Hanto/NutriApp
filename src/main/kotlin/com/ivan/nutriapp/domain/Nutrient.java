@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.List;
-
 @AllArgsConstructor @ToString @Getter
-public class Food {
+public class Nutrient {
 
-    private final FoodId id;
-    private final FoodName name;
-    private final List<Nutrient>nutrients;
+    private final NutrientId nutrientId;
+    private final NutrientName name;
+    private final Quantity quantity;
+
 }
