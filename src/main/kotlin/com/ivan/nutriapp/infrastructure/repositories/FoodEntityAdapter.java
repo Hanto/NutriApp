@@ -1,13 +1,13 @@
 package com.ivan.nutriapp.infrastructure.repositories;
 
-import com.ivan.nutriapp.domain.Food;
-import com.ivan.nutriapp.domain.FoodId;
-import com.ivan.nutriapp.domain.FoodName;
-import com.ivan.nutriapp.domain.Nutrient;
-import com.ivan.nutriapp.domain.NutrientId;
-import com.ivan.nutriapp.domain.NutrientName;
-import com.ivan.nutriapp.domain.Quantity;
-import com.ivan.nutriapp.domain.QuantityUnit;
+import com.ivan.nutriapp.domain.recipe.Food;
+import com.ivan.nutriapp.domain.recipe.FoodId;
+import com.ivan.nutriapp.domain.recipe.FoodName;
+import com.ivan.nutriapp.domain.recipe.Nutrient;
+import com.ivan.nutriapp.domain.recipe.NutrientId;
+import com.ivan.nutriapp.domain.recipe.NutrientName;
+import com.ivan.nutriapp.domain.recipe.Quantity;
+import com.ivan.nutriapp.domain.recipe.QuantityUnit;
 
 public class FoodEntityAdapter {
 

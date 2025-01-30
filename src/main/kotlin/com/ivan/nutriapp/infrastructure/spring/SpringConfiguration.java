@@ -1,5 +1,6 @@
 package com.ivan.nutriapp.infrastructure.spring;
 
+import com.ivan.nutriapp.application.RecipeUseCase;
 import com.ivan.nutriapp.infrastructure.repositories.FoodEntityAdapter;
 import com.ivan.nutriapp.infrastructure.repositories.USDAFoodRepository;
 import com.ivan.nutriapp.infrastructure.resources.FoodResourceAdapter;
@@ -48,5 +49,10 @@ public class SpringConfiguration {
             retryConfiguration.getHttpCodesToRetry(),
             retryConfiguration.getBackOffInterval(),
             retryConfiguration.getBackOffMultiplier()).build();
+    }
+
+    @Bean
+    public RecipeUseCase recipeUseCase(USDAFoodRepository foodRepository) {
+        return new RecipeUseCase(foodRepository);
     }
 }

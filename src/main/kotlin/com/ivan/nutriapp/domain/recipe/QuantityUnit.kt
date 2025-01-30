@@ -1,4 +1,4 @@
-package com.ivan.nutriapp.domain
+package com.ivan.nutriapp.domain.recipe
 
 enum class QuantityUnit {
 

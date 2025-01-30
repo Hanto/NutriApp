@@ -1,0 +1,15 @@
+POST http://localhost:8080/api/recipe/
+Content-Type: application/json
+
+{
+    "ingredients": [
+        {
+            "quantity": 10,
+            "foodId": 2105222
+        },
+        {
+            "quantity": 20,
+            "foodId": 2105223
+        }
+    ]
+}
