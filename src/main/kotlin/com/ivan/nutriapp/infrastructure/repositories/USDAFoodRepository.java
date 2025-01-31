@@ -1,7 +1,7 @@
 package com.ivan.nutriapp.infrastructure.repositories;
 
 import com.ivan.nutriapp.application.FoodRepository;
-import com.ivan.nutriapp.domain.recipe.Food;
+import com.ivan.nutriapp.domain.recipe.FoodPer100Grams;
 import com.ivan.nutriapp.domain.recipe.FoodId;
 import com.ivan.nutriapp.infrastructure.spring.USDAFoodConfiguration;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class USDAFoodRepository implements FoodRepository {
     //--------------------------------------------------------------------------------------------------------
 
     @Cacheable("Food")
-    @Override public Food findById(FoodId id) {
+    @Override public FoodPer100Grams findById(FoodId id) {
 
         var url = configuration.getBaseUrl() + configuration.getGetFoodByIdEndpoint() + id.getValue() + "?api_key=" + configuration.getApiKey();
         var payload = new HttpEntity(null, baseHeaders());

@@ -5,6 +5,8 @@ import com.ivan.nutriapp.domain.recipe.Ingredient;
 import com.ivan.nutriapp.domain.recipe.Recipe;
 import com.ivan.nutriapp.domain.recipe.RecipeId;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
@@ -12,6 +14,7 @@ import java.util.UUID;
 public class RecipeUseCase {
 
     private final FoodRepository foodRepository;
+    private final Logger log = LoggerFactory.getLogger(RecipeUseCase.class);
 
     public Recipe createRecipe(CreateRecipeCommand command) {
 
@@ -20,6 +23,8 @@ public class RecipeUseCase {
             .map( this::createIngredient).toList();
 
         var recipe = new Recipe(id, ingredients);
+
+        log.info("Created recipe {}", recipe.nutrients());
 
         // SAVE DATABASE
 

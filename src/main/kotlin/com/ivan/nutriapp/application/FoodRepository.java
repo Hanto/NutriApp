@@ -1,9 +1,9 @@
 package com.ivan.nutriapp.application;
 
-import com.ivan.nutriapp.domain.recipe.Food;
+import com.ivan.nutriapp.domain.recipe.FoodPer100Grams;
 import com.ivan.nutriapp.domain.recipe.FoodId;
 
 public interface FoodRepository {
 
-    Food findById(FoodId id);
+    FoodPer100Grams findById(FoodId id);
 }

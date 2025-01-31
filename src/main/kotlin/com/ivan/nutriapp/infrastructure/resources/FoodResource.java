@@ -5,7 +5,6 @@ import com.ivan.nutriapp.application.CreateRecipeCommand.IngredientCommand;
 import com.ivan.nutriapp.application.RecipeUseCase;
 import com.ivan.nutriapp.domain.recipe.FoodId;
 import com.ivan.nutriapp.domain.recipe.Gram;
-import com.ivan.nutriapp.domain.recipe.Recipe;
 import com.ivan.nutriapp.infrastructure.repositories.USDAFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
