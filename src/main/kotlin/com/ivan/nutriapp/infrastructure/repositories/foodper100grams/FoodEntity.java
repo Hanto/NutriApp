@@ -1,4 +1,4 @@
-package com.ivan.nutriapp.infrastructure.repositories;
+package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

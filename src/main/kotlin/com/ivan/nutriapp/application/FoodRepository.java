@@ -1,7 +1,7 @@
 package com.ivan.nutriapp.application;
 
-import com.ivan.nutriapp.domain.recipe.FoodPer100Grams;
-import com.ivan.nutriapp.domain.recipe.FoodId;
+import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
+import com.ivan.nutriapp.domain.nutrition.FoodId;
 
 public interface FoodRepository {
 

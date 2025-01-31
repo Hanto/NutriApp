@@ -1,9 +1,10 @@
 package com.ivan.nutriapp.infrastructure.spring;
 
 import com.ivan.nutriapp.application.RecipeUseCase;
-import com.ivan.nutriapp.infrastructure.repositories.FoodEntityAdapter;
-import com.ivan.nutriapp.infrastructure.repositories.USDAFoodRepository;
-import com.ivan.nutriapp.infrastructure.resources.FoodResourceAdapter;
+import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.FoodEntityAdapter;
+import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
+import com.ivan.nutriapp.infrastructure.resources.foodper100grams.FoodResourceAdapter;
+import com.ivan.nutriapp.infrastructure.resources.recipe.RecipeResourceAdapter;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,11 @@ public class SpringConfiguration {
     @Bean
     public FoodResourceAdapter foodResourceAdapter() {
         return new FoodResourceAdapter();
+    }
+
+    @Bean
+    public RecipeResourceAdapter recipeResourceAdapter() {
+        return new RecipeResourceAdapter();
     }
 
     @Bean

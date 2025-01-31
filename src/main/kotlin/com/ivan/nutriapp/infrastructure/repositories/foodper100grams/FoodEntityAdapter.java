@@ -1,13 +1,13 @@
-package com.ivan.nutriapp.infrastructure.repositories;
+package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
-import com.ivan.nutriapp.domain.recipe.FoodPer100Grams;
-import com.ivan.nutriapp.domain.recipe.FoodId;
-import com.ivan.nutriapp.domain.recipe.FoodName;
-import com.ivan.nutriapp.domain.recipe.NutrientPer100Grams;
-import com.ivan.nutriapp.domain.recipe.NutrientId;
-import com.ivan.nutriapp.domain.recipe.NutrientName;
-import com.ivan.nutriapp.domain.recipe.Quantity;
-import com.ivan.nutriapp.domain.recipe.QuantityUnit;
+import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
+import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodName;
+import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100Grams;
+import com.ivan.nutriapp.domain.nutrition.NutrientId;
+import com.ivan.nutriapp.domain.nutrition.NutrientName;
+import com.ivan.nutriapp.domain.nutrition.Quantity;
+import com.ivan.nutriapp.domain.nutrition.QuantityUnit;
 
 public class FoodEntityAdapter {
 

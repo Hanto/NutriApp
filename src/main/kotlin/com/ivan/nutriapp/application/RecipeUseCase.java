@@ -1,9 +1,9 @@
 package com.ivan.nutriapp.application;
 
 import com.ivan.nutriapp.application.CreateRecipeCommand.IngredientCommand;
-import com.ivan.nutriapp.domain.recipe.Ingredient;
-import com.ivan.nutriapp.domain.recipe.Recipe;
-import com.ivan.nutriapp.domain.recipe.RecipeId;
+import com.ivan.nutriapp.domain.nutrition.recipe.Ingredient;
+import com.ivan.nutriapp.domain.nutrition.recipe.Recipe;
+import com.ivan.nutriapp.domain.nutrition.recipe.RecipeId;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

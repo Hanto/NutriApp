@@ -1,8 +1,8 @@
-package com.ivan.nutriapp.infrastructure.repositories;
+package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
 import com.ivan.nutriapp.application.FoodRepository;
-import com.ivan.nutriapp.domain.recipe.FoodPer100Grams;
-import com.ivan.nutriapp.domain.recipe.FoodId;
+import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
+import com.ivan.nutriapp.domain.nutrition.FoodId;
 import com.ivan.nutriapp.infrastructure.spring.USDAFoodConfiguration;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;

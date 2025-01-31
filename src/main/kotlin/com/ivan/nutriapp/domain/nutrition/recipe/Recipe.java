@@ -1,5 +1,6 @@
-package com.ivan.nutriapp.domain.recipe;
+package com.ivan.nutriapp.domain.nutrition.recipe;
 
+import com.ivan.nutriapp.domain.nutrition.Gram;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import java.util.List;

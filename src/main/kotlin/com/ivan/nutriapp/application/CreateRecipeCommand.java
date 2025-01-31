@@ -1,7 +1,7 @@
 package com.ivan.nutriapp.application;
 
-import com.ivan.nutriapp.domain.recipe.FoodId;
-import com.ivan.nutriapp.domain.recipe.Gram;
+import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.Gram;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

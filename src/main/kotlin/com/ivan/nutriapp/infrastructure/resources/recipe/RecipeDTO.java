@@ -1,6 +1,5 @@
-package com.ivan.nutriapp.infrastructure.resources;
+package com.ivan.nutriapp.infrastructure.resources.recipe;
 
-import com.ivan.nutriapp.domain.recipe.FoodId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +7,16 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor @NoArgsConstructor @Data
-public class CreateRecipeRequestDTO {
+public class RecipeDTO {
 
+    private String id;
+    private Float weight;
     private List<IngredientDTO> ingredients;
 
-    @AllArgsConstructor @Data
+    @AllArgsConstructor @NoArgsConstructor @Data
     public static class IngredientDTO {
 
-        private final Float quantity;
-        private final Integer foodId;
+        private Float quantity;
+        private FoodDTO food;
     }
 }

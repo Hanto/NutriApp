@@ -1,12 +1,13 @@
-package com.ivan.nutriapp.infrastructure.resources;
+package com.ivan.nutriapp.infrastructure.resources.recipe;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
-public class NutrientDTO
-{
+public class NutrientDTO {
+
     private String id;
     private String name;
     private Float amount;
