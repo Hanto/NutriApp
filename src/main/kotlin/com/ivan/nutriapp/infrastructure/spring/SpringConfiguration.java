@@ -1,7 +1,8 @@
 package com.ivan.nutriapp.infrastructure.spring;
 
 import com.ivan.nutriapp.application.RecipeUseCase;
-import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.FoodEntityAdapter;
+import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAClient;
+import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAClientAdapter;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
 import com.ivan.nutriapp.infrastructure.repositories.recipe.H2RecipeRepository;
 import com.ivan.nutriapp.infrastructure.resources.foodper100grams.FoodResourceAdapter;
@@ -16,8 +17,8 @@ import org.springframework.retry.support.RetryTemplate;
 public class SpringConfiguration {
 
     @Bean
-    public FoodEntityAdapter foodAdapter() {
-        return new FoodEntityAdapter();
+    public USDAClientAdapter foodAdapter() {
+        return new USDAClientAdapter();
     }
 
     @Bean
@@ -31,12 +32,16 @@ public class SpringConfiguration {
     }
 
     @Bean
-    public USDAFoodRepository usdaFoodRepository(
-        USDAFoodConfiguration configuration,
-        RestTemplateWithRetry usdaFoodRestTemplate,
-        FoodEntityAdapter adapter) {
+    public USDAClient usdaClient(USDAFoodConfiguration configuration, RestTemplateWithRetry restTemplate) {
+        return new USDAClient(restTemplate, configuration);
+    }
 
-        return new USDAFoodRepository(usdaFoodRestTemplate, configuration, adapter);
+    @Bean
+    public USDAFoodRepository usdaFoodRepository(
+        USDAClient usdaClient,
+        USDAClientAdapter adapter) {
+
+        return new USDAFoodRepository(usdaClient, adapter);
     }
 
     @Bean

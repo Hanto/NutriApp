@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 public class FoodResource {
 
@@ -19,5 +22,12 @@ public class FoodResource {
         var foodId = new FoodId(id);
         var food = usdaFoodRepository.findById(foodId);
         return foodResourceAdapter.toResource(food);
+    }
+
+    @GetMapping("/api/food/search/{name}")
+    public String search(@PathVariable String name) {
+
+        var results = usdaFoodRepository.findByName(name);
+        return results;
     }
 }

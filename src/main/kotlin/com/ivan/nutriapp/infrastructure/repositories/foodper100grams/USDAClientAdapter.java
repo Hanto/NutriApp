@@ -9,7 +9,29 @@ import com.ivan.nutriapp.domain.nutrition.NutrientName;
 import com.ivan.nutriapp.domain.nutrition.Quantity;
 import com.ivan.nutriapp.domain.nutrition.QuantityUnit;
 
-public class FoodEntityAdapter {
+import java.util.Collections;
+
+public class USDAClientAdapter {
+
+    // REQUEST:
+
+    public USDAFindByNameRequest toFindByNameRequest(String name) {
+
+        return new USDAFindByNameRequest(
+            name,
+            Collections.emptyList(),
+            30,
+            1,
+            null,
+            null,
+            null,
+            Collections.emptyList(),
+            null,
+            null
+        );
+    }
+
+    // RESPONSE:
 
     public FoodPer100Grams toDomain(FoodEntity foodEntity) {
 
