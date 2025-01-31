@@ -14,6 +14,7 @@ import java.util.UUID;
 public class RecipeUseCase {
 
     private final FoodRepository foodRepository;
+    private final RecipeRepository recipeRepository;
     private final Logger log = LoggerFactory.getLogger(RecipeUseCase.class);
 
     public Recipe createRecipe(CreateRecipeCommand command) {
@@ -26,7 +27,7 @@ public class RecipeUseCase {
 
         log.info("Created recipe {}", recipe.nutrients());
 
-        // SAVE DATABASE
+        recipeRepository.save(recipe);
 
         return recipe;
     }

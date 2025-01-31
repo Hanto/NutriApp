@@ -3,6 +3,7 @@ package com.ivan.nutriapp.infrastructure.spring;
 import com.ivan.nutriapp.application.RecipeUseCase;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.FoodEntityAdapter;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
+import com.ivan.nutriapp.infrastructure.repositories.recipe.H2RecipeRepository;
 import com.ivan.nutriapp.infrastructure.resources.foodper100grams.FoodResourceAdapter;
 import com.ivan.nutriapp.infrastructure.resources.recipe.RecipeResourceAdapter;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -39,6 +40,11 @@ public class SpringConfiguration {
     }
 
     @Bean
+    public H2RecipeRepository h2RecipeRepository() {
+        return new H2RecipeRepository();
+    }
+
+    @Bean
     public RestTemplateWithRetry usdaFoodRestTemplate(RestTemplateBuilder builder, RetryTemplate defaultRetryTemplateForRest) {
 
         return new RestTemplateWithRetry(
@@ -58,7 +64,7 @@ public class SpringConfiguration {
     }
 
     @Bean
-    public RecipeUseCase recipeUseCase(USDAFoodRepository foodRepository) {
-        return new RecipeUseCase(foodRepository);
+    public RecipeUseCase recipeUseCase(USDAFoodRepository foodRepository, H2RecipeRepository h2RecipeRepository) {
+        return new RecipeUseCase(foodRepository, h2RecipeRepository);
     }
 }

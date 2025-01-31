@@ -28,5 +28,4 @@ public class Recipe {
             .reduce(Gram::plus)
             .orElse(Gram.zero());
     }
-
 }
