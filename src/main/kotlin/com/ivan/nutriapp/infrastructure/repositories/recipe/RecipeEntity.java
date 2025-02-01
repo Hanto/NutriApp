@@ -25,6 +25,7 @@ public class RecipeEntity {
 
     @Id private String id;
     private String name;
-    @OneToMany( mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "recipeId")
     private Set<IngredientEntity>ingredients;
 }

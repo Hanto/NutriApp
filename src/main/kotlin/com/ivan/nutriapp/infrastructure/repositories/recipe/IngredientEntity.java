@@ -34,6 +34,4 @@ public class IngredientEntity {
     private Float quantity;
     private Integer foodId;
     private String foodName;
-    @ManyToOne ( fetch = FetchType.LAZY )
-    private RecipeEntity recipe;
 }

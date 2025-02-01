@@ -26,7 +26,7 @@ public class RecipeAdapter {
                 .collect(Collectors.toSet())
         );
 
-        recipeEntity.getIngredients().forEach(it -> it.setRecipe(recipeEntity));
+        //recipeEntity.getIngredients().forEach(it -> it.setRecipe(recipeEntity));
 
         return recipeEntity;
     }
