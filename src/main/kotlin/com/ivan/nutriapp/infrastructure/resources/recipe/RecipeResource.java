@@ -4,16 +4,17 @@ import com.ivan.nutriapp.application.CreateRecipeCommand;
 import com.ivan.nutriapp.application.RecipeUseCase;
 import com.ivan.nutriapp.domain.nutrition.FoodId;
 import com.ivan.nutriapp.domain.nutrition.Gram;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController @AllArgsConstructor
 public class RecipeResource {
 
-    @Autowired private RecipeResourceAdapter recipeResourceAdapter;
-    @Autowired private RecipeUseCase recipeUseCase;
+    private final RecipeResourceAdapter recipeResourceAdapter;
+    private final RecipeUseCase recipeUseCase;
 
     @PostMapping("/api/recipe/")
     public RecipeDTO createRecipe(@RequestBody CreateRecipeRequestDTO recipeDTO) {

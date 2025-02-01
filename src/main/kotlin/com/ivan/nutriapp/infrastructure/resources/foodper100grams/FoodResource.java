@@ -4,6 +4,7 @@ import com.ivan.nutriapp.domain.nutrition.FoodId;
 import com.ivan.nutriapp.domain.nutrition.recipe.Food;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.FoodSearchResponse;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+@RestController @AllArgsConstructor
 public class FoodResource {
 
-    @Autowired private USDAFoodRepository usdaFoodRepository;
-    @Autowired private FoodResourceAdapter foodResourceAdapter;
+    private final USDAFoodRepository usdaFoodRepository;
+    private final FoodResourceAdapter foodResourceAdapter;
 
     @GetMapping("/api/food/{id}")
     public FoodPer100GramsDTO findBy(@PathVariable Integer id) {
