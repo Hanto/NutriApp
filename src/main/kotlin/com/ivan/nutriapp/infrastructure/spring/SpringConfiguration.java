@@ -32,7 +32,7 @@ public class SpringConfiguration {
     }
 
     @Bean
-    public USDAClient usdaClient(USDAFoodConfiguration configuration, RestTemplateWithRetry restTemplate) {
+    public USDAClient usdaClient(USDAClientConfiguration configuration, RestTemplateWithRetry restTemplate) {
         return new USDAClient(restTemplate, configuration);
     }
 

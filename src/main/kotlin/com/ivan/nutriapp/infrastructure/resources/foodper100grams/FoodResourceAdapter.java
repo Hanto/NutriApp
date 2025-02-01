@@ -5,6 +5,8 @@ import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100Grams;
 
 public class FoodResourceAdapter {
 
+    // FOODPER100:
+    //--------------------------------------------------------------------------------------------------------
 
     public FoodPer100GramsDTO toResource(FoodPer100Grams food) {
 

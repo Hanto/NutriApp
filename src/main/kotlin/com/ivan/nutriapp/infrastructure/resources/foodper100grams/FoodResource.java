@@ -1,6 +1,8 @@
 package com.ivan.nutriapp.infrastructure.resources.foodper100grams;
 
 import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.recipe.Food;
+import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.FoodSearchResponse;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,9 @@ public class FoodResource {
     }
 
     @GetMapping("/api/food/search/{name}")
-    public String search(@PathVariable String name) {
+    public List<FoodPer100GramsDTO> search(@PathVariable String name) {
 
         var results = usdaFoodRepository.findByName(name);
-        return results;
+        return results.stream().map(foodResourceAdapter::toResource).toList();
     }
 }

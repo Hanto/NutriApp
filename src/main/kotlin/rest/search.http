@@ -1,0 +1,19 @@
+POST https://api.nal.usda.gov/fdc/v1/foods/search?api_key=X20vQbvNV3sT2rqsyH8ItZuPIJ7yNcmldn9LYLc0
+Content-Type: application/json
+
+{
+  "query": "Sugar",
+  "dataType": [
+    "Foundation"
+  ],
+  "pageSize": 30,
+  "pageNumber": 1,
+  "sortBy": null,
+  "sortOrder": null,
+  "brandOwner": null,
+  "tradeChannel": [],
+  "startDate": null,
+  "endDate": null
+}
+
+

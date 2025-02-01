@@ -5,5 +5,7 @@ enum class QuantityUnit {
     G,
     MG,
     IU,
-    KCAL
+    KCAL,
+    UG,
+    KJ
 }

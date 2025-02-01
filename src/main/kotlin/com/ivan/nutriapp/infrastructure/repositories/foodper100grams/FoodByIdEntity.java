@@ -9,21 +9,21 @@ import lombok.ToString;
 import java.util.List;
 
 @NoArgsConstructor @AllArgsConstructor @Setter @Getter @ToString
-public class FoodEntity {
+public class FoodByIdEntity {
 
     private Integer fdcId;
     private String description;
-    private List<FoodNutrientEntity> foodNutrients;
+    private List<FoodNutrientByIdEntity> foodNutrients;
 
     @NoArgsConstructor @AllArgsConstructor @Setter @Getter @ToString
-    public static class FoodNutrientEntity {
+    public static class FoodNutrientByIdEntity {
 
         private Float amount;
-        private NutrientEntity nutrient;
+        private NutrientByIdEntity nutrient;
     }
 
     @NoArgsConstructor @AllArgsConstructor @Setter @Getter @ToString
-    public static class NutrientEntity {
+    public static class NutrientByIdEntity {
 
         private Integer id;
         private String name;

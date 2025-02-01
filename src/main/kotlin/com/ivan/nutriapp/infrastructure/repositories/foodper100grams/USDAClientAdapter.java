@@ -8,18 +8,22 @@ import com.ivan.nutriapp.domain.nutrition.NutrientId;
 import com.ivan.nutriapp.domain.nutrition.NutrientName;
 import com.ivan.nutriapp.domain.nutrition.Quantity;
 import com.ivan.nutriapp.domain.nutrition.QuantityUnit;
+import com.ivan.nutriapp.domain.nutrition.recipe.Food;
+import com.ivan.nutriapp.domain.nutrition.recipe.Nutrient;
 
 import java.util.Collections;
+import java.util.List;
 
 public class USDAClientAdapter {
 
     // REQUEST:
+    //--------------------------------------------------------------------------------------------------------
 
     public USDAFindByNameRequest toFindByNameRequest(String name) {
 
         return new USDAFindByNameRequest(
             name,
-            Collections.emptyList(),
+            List.of("Foundation"),
             30,
             1,
             null,
@@ -31,9 +35,32 @@ public class USDAClientAdapter {
         );
     }
 
-    // RESPONSE:
 
-    public FoodPer100Grams toDomain(FoodEntity foodEntity) {
+    // RESPONSE:
+    //--------------------------------------------------------------------------------------------------------
+
+    public FoodPer100Grams toDomain(FoodSearchResponse.FoodSearchEntity foodSearchEntity) {
+
+        var id = new FoodId(foodSearchEntity.getFdcId());
+        var name = new FoodName(foodSearchEntity.getDescription());
+        var nutrients = foodSearchEntity.getFoodNutrients().stream().map(this::toDomain).toList();
+
+        return new FoodPer100Grams(id, name, nutrients);
+    }
+
+    public NutrientPer100Grams toDomain(FoodSearchResponse.FoodNutrientSearchEntity nutrientSearchEntity) {
+
+        var id = new NutrientId(nutrientSearchEntity.getNutrientId());
+        var name = new NutrientName(nutrientSearchEntity.getNutrientName());
+        var quantity = new Quantity(nutrientSearchEntity.getValue(), toQuantityUnit(nutrientSearchEntity.getUnitName()));
+
+        return new NutrientPer100Grams(id, name, quantity);
+    }
+
+    // RESPONSE:
+    //--------------------------------------------------------------------------------------------------------
+
+    public FoodPer100Grams toDomain(FoodByIdEntity foodEntity) {
 
         var id = new FoodId(foodEntity.getFdcId());
         var name = new FoodName(foodEntity.getDescription());
@@ -42,7 +69,7 @@ public class USDAClientAdapter {
         return new FoodPer100Grams(id, name, nutrients);
     }
 
-    private NutrientPer100Grams toDomain(FoodEntity.FoodNutrientEntity foodNutrientEntity) {
+    private NutrientPer100Grams toDomain(FoodByIdEntity.FoodNutrientByIdEntity foodNutrientEntity) {
 
         var id = new NutrientId(foodNutrientEntity.getNutrient().getId());
         var name = new NutrientName(foodNutrientEntity.getNutrient().getName());
@@ -53,12 +80,14 @@ public class USDAClientAdapter {
 
     private QuantityUnit toQuantityUnit(String unitName) {
 
-        return switch (unitName) {
+        return switch (unitName.toLowerCase()) {
 
             case "g" -> QuantityUnit.G;
             case "mg" -> QuantityUnit.MG;
             case "kcal" -> QuantityUnit.KCAL;
-            case "IU" -> QuantityUnit.IU;
+            case "iu" -> QuantityUnit.IU;
+            case "ug" -> QuantityUnit.UG;
+            case "kj" -> QuantityUnit.KJ;
             default -> throw new RuntimeException("Unknown nutrient.unitname: "+ unitName);
         };
     }

@@ -3,6 +3,7 @@ package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 import com.ivan.nutriapp.application.FoodRepository;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.recipe.Food;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 
@@ -24,9 +25,10 @@ public class USDAFoodRepository implements FoodRepository {
         return adapter.toDomain(response);
     }
 
-    public String findByName(String name) {
+    public List<FoodPer100Grams> findByName(String name) {
 
         var request = adapter.toFindByNameRequest(name);
-        return client.findByName(request);
+        var result = client.findByName(request);
+        return result.getFoods().stream().map(adapter::toDomain).toList();
     }
 }

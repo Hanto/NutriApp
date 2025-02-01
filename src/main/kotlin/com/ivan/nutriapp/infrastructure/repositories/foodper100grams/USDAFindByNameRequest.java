@@ -2,11 +2,12 @@ package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
-
+import lombok.Data;
+import lombok.ToString;
 import java.time.LocalDate;
 import java.util.List;
 
-@AllArgsConstructor
+@AllArgsConstructor @ToString @Data
 public class USDAFindByNameRequest {
 
     private String query;
