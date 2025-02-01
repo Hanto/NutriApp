@@ -3,6 +3,7 @@ package com.ivan.nutriapp.infrastructure.repositories.recipe;
 import com.ivan.nutriapp.domain.nutrition.recipe.RecipeId;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,6 +34,6 @@ public class IngredientEntity {
     private Float quantity;
     private Integer foodId;
     private String foodName;
-    @ManyToOne
+    @ManyToOne ( fetch = FetchType.LAZY )
     private RecipeEntity recipe;
 }
