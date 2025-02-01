@@ -18,13 +18,17 @@ public class RecipeAdapter {
 
     public RecipeEntity toEntity(Recipe recipe) {
 
-        return new RecipeEntity(
+        var recipeEntity = new RecipeEntity(
             recipe.getId().getValue().toString(),
             recipe.getName().getValue(),
             recipe.getIngredients().stream()
                 .map(it -> toEntity(recipe.getId(), it))
                 .collect(Collectors.toSet())
         );
+
+        recipeEntity.getIngredients().forEach(it -> it.setRecipe(recipeEntity));
+
+        return recipeEntity;
     }
 
     private IngredientEntity toEntity(RecipeId recipeId, Ingredient ingredient) {
@@ -33,8 +37,7 @@ public class RecipeAdapter {
             ingredient.getId().getValue().toString(),
             ingredient.getQuantity().getValue(),
             ingredient.getFoodPer100Grams().getId().getValue(),
-            ingredient.getFoodPer100Grams().getName().getValue(),
-            recipeId.getValue().toString()
+            ingredient.getFoodPer100Grams().getName().getValue()
         );
     }
 

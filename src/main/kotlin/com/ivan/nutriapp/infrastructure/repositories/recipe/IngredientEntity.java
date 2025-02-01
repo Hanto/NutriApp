@@ -11,18 +11,28 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 
 @Entity @Table(name = "INGREDIENT") @DynamicUpdate
-@NoArgsConstructor @AllArgsConstructor @Data
+@NoArgsConstructor @Setter @Getter
 public class IngredientEntity {
+
+    public IngredientEntity(String id, Float quantity, Integer foodId, String foodName) {
+
+        this.id = id;
+        this.quantity = quantity;
+        this.foodId = foodId;
+        this.foodName = foodName;
+    }
 
     @Id private String id;
     private Float quantity;
     private Integer foodId;
     private String foodName;
-    @Column(nullable = false)
-    private String recipeId; // FK
+    @ManyToOne
+    private RecipeEntity recipe;
 }
