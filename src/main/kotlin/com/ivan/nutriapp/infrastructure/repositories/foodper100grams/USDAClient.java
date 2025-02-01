@@ -9,6 +9,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestOperations;
 
 @AllArgsConstructor
@@ -29,6 +33,17 @@ public class USDAClient {
         return restTemplate.exchange(url, HttpMethod.GET, payload, FoodByIdEntity.class).getBody();
     }
 
+    /*@Retryable(
+        noRetryFor = {
+            HttpServerErrorException.BadGateway.class,
+            HttpServerErrorException.ServiceUnavailable.class,
+            HttpServerErrorException.GatewayTimeout.class,
+            HttpServerErrorException.InternalServerError.class,
+            HttpClientErrorException.TooManyRequests.class,
+        },
+        maxAttempts = 4,
+        backoff = @Backoff(delay = 1000, multiplier = 2)
+    )*/
     public FoodSearchResponse findByName(USDAFindByNameRequest request) {
 
         var url = configuration.getBaseUrl() + configuration.getSearchFoodEndpoint() + "?api_key=" + configuration.getApiKey();
@@ -36,7 +51,6 @@ public class USDAClient {
         var payload = new HttpEntity<>(request, baseHeaders());
 
         log.info("calling the USDA: {}", url);
-        log.info("calling the USDA: {}", request);
 
         return restTemplate.exchange(url, HttpMethod.POST, payload, FoodSearchResponse.class).getBody();
     }

@@ -5,7 +5,9 @@ import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAClient;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAClientAdapter;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
 import com.ivan.nutriapp.infrastructure.repositories.recipe.H2RecipeRepository;
-import com.ivan.nutriapp.infrastructure.resources.foodper100grams.FoodResourceAdapter;
+import com.ivan.nutriapp.infrastructure.repositories.recipe.RecipeAdapter;
+import com.ivan.nutriapp.infrastructure.repositories.recipe.RecipeDB;
+import com.ivan.nutriapp.infrastructure.resources.foodper100grams.FoodPer100GramsResourceAdapter;
 import com.ivan.nutriapp.infrastructure.resources.recipe.RecipeResourceAdapter;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -22,8 +24,8 @@ public class SpringConfiguration {
     }
 
     @Bean
-    public FoodResourceAdapter foodResourceAdapter() {
-        return new FoodResourceAdapter();
+    public FoodPer100GramsResourceAdapter foodResourceAdapter() {
+        return new FoodPer100GramsResourceAdapter();
     }
 
     @Bean
@@ -45,8 +47,13 @@ public class SpringConfiguration {
     }
 
     @Bean
-    public H2RecipeRepository h2RecipeRepository() {
-        return new H2RecipeRepository();
+    public RecipeAdapter recipeAdapter() {
+        return new RecipeAdapter();
+    }
+
+    @Bean
+    public H2RecipeRepository h2RecipeRepository(RecipeDB recipeDB, RecipeAdapter recipeAdapter) {
+        return new H2RecipeRepository(recipeDB, recipeAdapter);
     }
 
     @Bean

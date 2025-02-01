@@ -9,6 +9,8 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor @Data
 public class CreateRecipeRequestDTO {
 
+    private String id;
+    private String name;
     private List<IngredientDTO> ingredients;
 
     @AllArgsConstructor @Data

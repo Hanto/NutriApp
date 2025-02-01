@@ -11,6 +11,7 @@ public class RecipeResourceAdapter {
 
         return new RecipeDTO(
             recipe.getId().getValue().toString(),
+            recipe.getName().getValue(),
             recipe.weight().getValue(),
             recipe.getIngredients().stream().map(this::toResource).toList());
     }

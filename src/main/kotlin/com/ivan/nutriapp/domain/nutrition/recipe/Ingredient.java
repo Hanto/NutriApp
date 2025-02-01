@@ -10,8 +10,14 @@ import java.util.List;
 @AllArgsConstructor @Getter
 public class Ingredient {
 
+    private final IngredientId id;
     private final Gram quantity;
     private final FoodPer100Grams foodPer100Grams;
+
+    public Ingredient modifyQuantity(Gram newQuantity) {
+
+        return new Ingredient(id, newQuantity, foodPer100Grams);
+    }
 
     public Food getFood() {
 

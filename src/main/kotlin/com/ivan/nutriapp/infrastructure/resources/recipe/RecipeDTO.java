@@ -10,6 +10,7 @@ import java.util.List;
 public class RecipeDTO {
 
     private String id;
+    private String name;
     private Float weight;
     private List<IngredientDTO> ingredients;
 

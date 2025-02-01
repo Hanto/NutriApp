@@ -21,6 +21,5 @@ public class CacheConfiguration {
         Config config = new YamlConfigBuilder(configURL).build();
 
         return Hazelcast.newHazelcastInstance(config);
-
     }
 }

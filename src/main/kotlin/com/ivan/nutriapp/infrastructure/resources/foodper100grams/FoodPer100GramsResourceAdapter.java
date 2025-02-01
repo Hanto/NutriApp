@@ -3,7 +3,7 @@ package com.ivan.nutriapp.infrastructure.resources.foodper100grams;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100Grams;
 
-public class FoodResourceAdapter {
+public class FoodPer100GramsResourceAdapter {
 
     // FOODPER100:
     //--------------------------------------------------------------------------------------------------------
