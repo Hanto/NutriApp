@@ -23,7 +23,7 @@ public class NutrientPer100Entity {
     private Float quantity;
     private String unit;
 
-    @ManyToOne ( fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne ( fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
     @JoinColumn( name = "FOOD100_ID")
     private FoodPer100Entity food100;
 }

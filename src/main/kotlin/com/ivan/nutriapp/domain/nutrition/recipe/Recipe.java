@@ -3,17 +3,45 @@ package com.ivan.nutriapp.domain.nutrition.recipe;
 import com.ivan.nutriapp.domain.nutrition.Gram;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.val;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor @Getter
+@Getter
 public class Recipe {
 
     private final RecipeId id;
     private final RecipeName name;
     private final List<Ingredient> ingredients;
+
+    // CONSTRUCTOR (validation of invariants):
+    //--------------------------------------------------------------------------------------------------------
+
+    public Recipe(RecipeId id, RecipeName name, List<Ingredient> ingredients) {
+
+        var hasDuplicateIngredients = ingredients.stream()
+            .collect(Collectors.groupingBy(Ingredient::getId, Collectors.counting()))
+            .values().stream().anyMatch(count -> count > 1);
+
+        var hasDuplicatedFoods = ingredients.stream()
+            .collect(Collectors.groupingBy(it -> it.getFood().getId(), Collectors.counting()))
+            .values().stream().anyMatch(count -> count > 1);
+
+        if (hasDuplicateIngredients)
+            throw new IllegalArgumentException("Duplicate ingredients");
+
+        if (hasDuplicatedFoods)
+            throw new IllegalArgumentException("Duplicated foods");
+
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients;
+    }
+
+    // MAIN:
+    //--------------------------------------------------------------------------------------------------------
 
     public Recipe addIngredient(Ingredient ingredient) {
 

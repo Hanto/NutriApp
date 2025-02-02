@@ -1,6 +1,7 @@
 package com.ivan.nutriapp.application;
 
 import com.ivan.nutriapp.application.CreateRecipeCommand.IngredientCommand;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.domain.nutrition.Gram;
 import com.ivan.nutriapp.domain.nutrition.recipe.Ingredient;
 import com.ivan.nutriapp.domain.nutrition.recipe.IngredientId;
@@ -26,7 +27,7 @@ public class RecipeUseCase {
         var id = command.getId();
         var name = command.getName();
         var ingredients = command.getIngredients().stream()
-            .map( this::createIngredient).toList();
+            .map(it -> createIngredient(it.getFoodId(), it.getQuantity())).toList();
 
         var recipe = new Recipe(id, name, ingredients);
 
@@ -42,11 +43,7 @@ public class RecipeUseCase {
         var recipeOptional = recipeRepository.findById(command.getRecipeId());
         var recipe = recipeOptional.get();
 
-        var ingredient = new Ingredient(
-            new IngredientId(UUID.randomUUID()),
-            new Gram(command.getQuantity().getValue()),
-            foodRepository.findById(command.getFoodId())
-        );
+        var ingredient = createIngredient(command.getFoodId(), command.getQuantity());
 
         var modifiedRecipe = recipe.addIngredient(ingredient);
 
@@ -71,11 +68,10 @@ public class RecipeUseCase {
     // HELPER:
     //--------------------------------------------------------------------------------------------------------
 
-    private Ingredient createIngredient(IngredientCommand command) {
+    private Ingredient createIngredient(FoodPer100GramsId foodId, Gram quantity) {
 
         var id = new IngredientId(UUID.randomUUID());
-        var food = foodRepository.findById(command.getFoodId());
-        var quantity = command.getQuantity();
+        var food = foodRepository.findById(foodId);
 
         return new Ingredient(id, quantity, food);
     }

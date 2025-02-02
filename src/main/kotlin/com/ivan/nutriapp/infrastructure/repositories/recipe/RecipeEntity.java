@@ -33,5 +33,6 @@ public class RecipeEntity implements Persistable<String> {
         cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<IngredientEntity> ingredients;
 
+    @Transient
     private boolean isNew = false;
 }

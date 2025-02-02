@@ -2,8 +2,8 @@ POST http://localhost:8080/api/recipe/
 Content-Type: application/json
 
 {
-    "id": "046b19a2-950c-4a94-83cb-d58bbe1590f7",
-    "name": "Pizza Bolichera",
+    "id": "64b66352-2157-44b4-bc8f-271ef01da696",
+    "name": "Spagetti Bolichera",
     "ingredients": [
         {
             "quantity": 40,
