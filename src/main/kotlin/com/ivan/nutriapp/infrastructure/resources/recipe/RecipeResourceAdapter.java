@@ -19,22 +19,23 @@ public class RecipeResourceAdapter {
     private RecipeDTO.IngredientDTO toResource(Ingredient ingredient) {
 
         return new RecipeDTO.IngredientDTO(
+            String.valueOf(ingredient.getId().getValue()),
             ingredient.getQuantity().getValue(),
             toResource(ingredient.getFood())
         );
     }
 
-    private FoodDTO toResource(Food food) {
+    private RecipeDTO.FoodDTO toResource(Food food) {
 
-        return new FoodDTO(
+        return new RecipeDTO.FoodDTO(
             String.valueOf(food.getId().getValue()),
             food.getName().getValue(),
             food.getNutrients().stream().map(this::toResource).toList());
     }
 
-    private NutrientDTO toResource(Nutrient nutrient) {
+    private RecipeDTO.NutrientDTO toResource(Nutrient nutrient) {
 
-        return new NutrientDTO(
+        return new RecipeDTO.NutrientDTO(
             String.valueOf(nutrient.getNutrientId().getValue()),
             nutrient.getName().getValue(),
             nutrient.getQuantity().getAmount(),

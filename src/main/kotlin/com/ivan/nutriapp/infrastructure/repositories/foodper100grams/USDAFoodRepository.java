@@ -2,8 +2,7 @@ package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
 import com.ivan.nutriapp.application.FoodRepository;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
-import com.ivan.nutriapp.domain.nutrition.FoodId;
-import com.ivan.nutriapp.domain.nutrition.recipe.Food;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 
@@ -19,7 +18,7 @@ public class USDAFoodRepository implements FoodRepository {
     //--------------------------------------------------------------------------------------------------------
 
     @Cacheable("Food")
-    @Override public FoodPer100Grams findById(FoodId id) {
+    @Override public FoodPer100Grams findById(FoodPer100GramsId id) {
 
         var response = client.findBy(id);
         return adapter.toDomain(response);

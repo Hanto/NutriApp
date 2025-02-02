@@ -1,6 +1,6 @@
 package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
-import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.infrastructure.spring.USDAClientConfiguration;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -9,10 +9,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.retry.annotation.Backoff;
-import org.springframework.retry.annotation.Retryable;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestOperations;
 
 @AllArgsConstructor
@@ -23,7 +19,7 @@ public class USDAClient {
     private final Logger log = LoggerFactory.getLogger(USDAClient.class);
 
 
-    public FoodByIdEntity findBy(FoodId id) {
+    public FoodByIdEntity findBy(FoodPer100GramsId id) {
 
         var url = configuration.getBaseUrl() + configuration.getGetFoodByIdEndpoint() + id.getValue() + "?api_key=" + configuration.getApiKey();
         var payload = new HttpEntity<>(null, baseHeaders());

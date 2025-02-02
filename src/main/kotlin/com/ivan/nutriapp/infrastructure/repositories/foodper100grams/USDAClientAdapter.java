@@ -1,7 +1,7 @@
 package com.ivan.nutriapp.infrastructure.repositories.foodper100grams;
 
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
-import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.domain.nutrition.FoodName;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.NutrientId;
@@ -39,7 +39,7 @@ public class USDAClientAdapter {
 
     public FoodPer100Grams toDomain(FoodSearchResponse.FoodSearchEntity foodSearchEntity) {
 
-        var id = new FoodId(foodSearchEntity.getFdcId());
+        var id = new FoodPer100GramsId(foodSearchEntity.getFdcId());
         var name = new FoodName(foodSearchEntity.getDescription());
         var nutrients = foodSearchEntity.getFoodNutrients().stream().map(this::toDomain).toList();
 
@@ -61,7 +61,7 @@ public class USDAClientAdapter {
 
     public FoodPer100Grams toDomain(FoodByIdEntity foodEntity) {
 
-        var id = new FoodId(foodEntity.getFdcId());
+        var id = new FoodPer100GramsId(foodEntity.getFdcId());
         var name = new FoodName(foodEntity.getDescription());
         var nutrients = foodEntity.getFoodNutrients().stream().map(this::toDomain).toList();
 

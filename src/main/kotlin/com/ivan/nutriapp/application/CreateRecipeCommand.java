@@ -1,6 +1,6 @@
 package com.ivan.nutriapp.application;
 
-import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.domain.nutrition.Gram;
 import com.ivan.nutriapp.domain.nutrition.recipe.RecipeId;
 import com.ivan.nutriapp.domain.nutrition.recipe.RecipeName;
@@ -20,6 +20,6 @@ public class CreateRecipeCommand {
     public static class IngredientCommand {
 
         private final Gram quantity;
-        private final FoodId foodId;
+        private final FoodPer100GramsId foodId;
     }
 }

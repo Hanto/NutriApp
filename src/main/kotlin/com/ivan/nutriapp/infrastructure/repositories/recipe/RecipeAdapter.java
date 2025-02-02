@@ -1,6 +1,6 @@
 package com.ivan.nutriapp.infrastructure.repositories.recipe;
 
-import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.domain.nutrition.FoodName;
 import com.ivan.nutriapp.domain.nutrition.Gram;
 import com.ivan.nutriapp.domain.nutrition.NutrientId;
@@ -12,13 +12,10 @@ import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100GramsId;
 import com.ivan.nutriapp.domain.nutrition.recipe.Ingredient;
 import com.ivan.nutriapp.domain.nutrition.recipe.IngredientId;
-import com.ivan.nutriapp.domain.nutrition.recipe.Nutrient;
 import com.ivan.nutriapp.domain.nutrition.recipe.Recipe;
 import com.ivan.nutriapp.domain.nutrition.recipe.RecipeId;
 import com.ivan.nutriapp.domain.nutrition.recipe.RecipeName;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -109,7 +106,7 @@ public class RecipeAdapter {
     public FoodPer100Grams toDomain(FoodPer100Entity entity) {
 
         return new FoodPer100Grams(
-            new FoodId(entity.getId()),
+            new FoodPer100GramsId(entity.getId()),
             new FoodName(entity.getName()),
             entity.getNutrients().stream().map(this::toDomain).toList()
         );

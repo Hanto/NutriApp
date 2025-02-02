@@ -1,6 +1,6 @@
 package com.ivan.nutriapp.infrastructure.resources.foodper100grams;
 
-import com.ivan.nutriapp.domain.nutrition.FoodId;
+import com.ivan.nutriapp.domain.nutrition.FoodPer100GramsId;
 import com.ivan.nutriapp.infrastructure.repositories.foodper100grams.USDAFoodRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ public class FoodPer100GramsResource {
     @GetMapping("/api/food/{id}")
     public FoodPer100GramsDTO findBy(@PathVariable Integer id) {
 
-        var foodId = new FoodId(id);
+        var foodId = new FoodPer100GramsId(id);
         var food = usdaFoodRepository.findById(foodId);
         return foodResourceAdapter.toResource(food);
     }

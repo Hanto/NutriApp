@@ -3,6 +3,6 @@ Content-Type: application/json
 
 {
     "ingredientId": "1594d144-648b-4933-8a18-adb86bc9d293",
-    "quantity": 60,
+    "quantity": 40,
     "foodId": 12131
 }

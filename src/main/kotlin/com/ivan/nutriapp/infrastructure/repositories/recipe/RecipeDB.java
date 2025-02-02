@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface RecipeDB extends JpaRepository<RecipeEntity, String> {
 
-    @EntityGraph( attributePaths = { "ingredients" })
+    @EntityGraph( attributePaths = { "ingredients", "ingredients.food", "ingredients.food.nutrients" })
     Optional<RecipeEntity> findById(String id);
 }

@@ -17,7 +17,25 @@ public class RecipeDTO {
     @AllArgsConstructor @NoArgsConstructor @Data
     public static class IngredientDTO {
 
+        private String id;
         private Float quantity;
         private FoodDTO food;
+    }
+
+    @AllArgsConstructor @NoArgsConstructor @Data
+    public static class FoodDTO {
+
+        private String id;
+        private String name;
+        private List<NutrientDTO> nutrients;
+    }
+
+    @NoArgsConstructor @AllArgsConstructor @Data
+    public static class NutrientDTO {
+
+        private String id;
+        private String name;
+        private Float amount;
+        private String quantityUnit;
     }
 }
