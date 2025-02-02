@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface RecipeRepository {
 
+    void create(Recipe recipe);
     void save(Recipe recipe);
     Optional<Recipe> findById(RecipeId id);
 }

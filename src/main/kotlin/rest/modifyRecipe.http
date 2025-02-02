@@ -1,8 +1,8 @@
-PUT http://localhost:8080/api/recipe/164cd31b-00f4-4c4f-936a-18866b8bd37c/ingredient
+PUT http://localhost:8080/api/recipe/046b19a2-950c-4a94-83cb-d58bbe1590f7/ingredient
 Content-Type: application/json
 
 {
-    "ingredientId": "b04aad1b-f41b-4a84-a36c-4cbf3ed2722f",
-    "quantity": 40,
+    "ingredientId": "1594d144-648b-4933-8a18-adb86bc9d293",
+    "quantity": 60,
     "foodId": 12131
 }

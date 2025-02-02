@@ -32,7 +32,7 @@ public class RecipeUseCase {
 
         log.info("Created recipe {}", recipe.nutrients());
 
-        recipeRepository.save(recipe);
+        recipeRepository.create(recipe);
 
         return recipe;
     }

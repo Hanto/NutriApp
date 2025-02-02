@@ -19,6 +19,7 @@ public class FoodPer100GramsResourceAdapter {
     private NutrientPer100GramsDTO toResource(NutrientPer100Grams nutrient) {
 
         return new NutrientPer100GramsDTO(
+            String.valueOf(nutrient.getId().getValue()),
             String.valueOf(nutrient.getNutrientId().getValue()),
             nutrient.getName().getValue(),
             nutrient.getQuantity().getAmount(),

@@ -21,6 +21,7 @@ public class FoodSearchResponse {
     @AllArgsConstructor @NoArgsConstructor @Data
     public static class FoodNutrientSearchEntity {
 
+        private Integer foodNutrientId;
         private Float value;
         private Integer nutrientId;
         private String nutrientName;

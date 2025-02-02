@@ -11,6 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor @ToString @Getter
 public class NutrientPer100Grams {
 
+    private final NutrientPer100GramsId id;
     private final NutrientId nutrientId;
     private final NutrientName name;
     private final Quantity quantity;

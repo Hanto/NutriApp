@@ -8,8 +8,7 @@ import com.ivan.nutriapp.domain.nutrition.NutrientId;
 import com.ivan.nutriapp.domain.nutrition.NutrientName;
 import com.ivan.nutriapp.domain.nutrition.Quantity;
 import com.ivan.nutriapp.domain.nutrition.QuantityUnit;
-import com.ivan.nutriapp.domain.nutrition.recipe.Food;
-import com.ivan.nutriapp.domain.nutrition.recipe.Nutrient;
+import com.ivan.nutriapp.domain.nutrition.foodper100grams.NutrientPer100GramsId;
 
 import java.util.Collections;
 import java.util.List;
@@ -35,7 +34,6 @@ public class USDAClientAdapter {
         );
     }
 
-
     // RESPONSE:
     //--------------------------------------------------------------------------------------------------------
 
@@ -50,11 +48,12 @@ public class USDAClientAdapter {
 
     public NutrientPer100Grams toDomain(FoodSearchResponse.FoodNutrientSearchEntity nutrientSearchEntity) {
 
-        var id = new NutrientId(nutrientSearchEntity.getNutrientId());
+        var id = new NutrientPer100GramsId(nutrientSearchEntity.getFoodNutrientId());
+        var nutrientId = new NutrientId(nutrientSearchEntity.getNutrientId());
         var name = new NutrientName(nutrientSearchEntity.getNutrientName());
         var quantity = new Quantity(nutrientSearchEntity.getValue(), toQuantityUnit(nutrientSearchEntity.getUnitName()));
 
-        return new NutrientPer100Grams(id, name, quantity);
+        return new NutrientPer100Grams(id, nutrientId, name, quantity);
     }
 
     // RESPONSE:
@@ -71,11 +70,12 @@ public class USDAClientAdapter {
 
     private NutrientPer100Grams toDomain(FoodByIdEntity.FoodNutrientByIdEntity foodNutrientEntity) {
 
-        var id = new NutrientId(foodNutrientEntity.getNutrient().getId());
+        var id = new NutrientPer100GramsId(foodNutrientEntity.getId());
+        var nutrientId = new NutrientId(foodNutrientEntity.getNutrient().getId());
         var name = new NutrientName(foodNutrientEntity.getNutrient().getName());
         var quantity = new Quantity(foodNutrientEntity.getAmount(), toQuantityUnit(foodNutrientEntity.getNutrient().getUnitName()));
 
-        return new NutrientPer100Grams(id, name, quantity);
+        return new NutrientPer100Grams(id, nutrientId, name, quantity);
     }
 
     private QuantityUnit toQuantityUnit(String unitName) {

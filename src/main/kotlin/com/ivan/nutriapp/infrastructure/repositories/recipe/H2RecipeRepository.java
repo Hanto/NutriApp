@@ -14,6 +14,14 @@ public class H2RecipeRepository implements RecipeRepository {
     private final RecipeAdapter recipeAdapter;
 
     @Override
+    public void create(Recipe recipe) {
+
+        var recipeEntity = recipeAdapter.toEntity(recipe);
+        recipeEntity.setNew(true);
+        recipeDB.save(recipeEntity);
+    }
+
+    @Override
     public void save(Recipe recipe) {
 
         var recipeEntity = recipeAdapter.toEntity(recipe);

@@ -2,6 +2,8 @@ package com.ivan.nutriapp.domain.nutrition.recipe;
 
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.Gram;
+import com.ivan.nutriapp.infrastructure.repositories.recipe.IngredientEntity;
+import com.ivan.nutriapp.infrastructure.repositories.recipe.RecipeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

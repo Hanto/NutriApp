@@ -2,11 +2,11 @@ POST http://localhost:8080/api/recipe/
 Content-Type: application/json
 
 {
-    "id": "164cd31b-00f4-4c4f-936a-18866b8bd37c",
+    "id": "046b19a2-950c-4a94-83cb-d58bbe1590f7",
     "name": "Pizza Bolichera",
     "ingredients": [
         {
-            "quantity": 60,
+            "quantity": 40,
             "foodId": 2105222
         },
         {

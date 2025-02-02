@@ -18,6 +18,7 @@ public class FoodByIdEntity {
     @NoArgsConstructor @AllArgsConstructor @Setter @Getter @ToString
     public static class FoodNutrientByIdEntity {
 
+        private Integer id;
         private Float amount;
         private NutrientByIdEntity nutrient;
     }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class NutrientPer100GramsDTO
 {
     private String id;
+    private String nutriendId;
     private String name;
     private Float amount;
     private String quantityUnit;
