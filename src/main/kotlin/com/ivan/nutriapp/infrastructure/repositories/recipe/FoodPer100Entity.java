@@ -24,7 +24,7 @@ public class FoodPer100Entity {
     @Id private Integer id;
     private String name;
 
-    @OneToMany( mappedBy = "food100", fetch = FetchType.EAGER,
+    @OneToMany( mappedBy = "food100", fetch = FetchType.LAZY,
         cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<NutrientPer100Entity>nutrients;
 }

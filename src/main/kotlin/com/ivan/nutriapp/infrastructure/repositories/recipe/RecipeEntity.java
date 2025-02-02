@@ -29,10 +29,9 @@ public class RecipeEntity implements Persistable<String> {
     @Id private String id;
     private String name;
 
-    @OneToMany( mappedBy = "recipe", fetch = FetchType.EAGER,
+    @OneToMany( mappedBy = "recipe", fetch = FetchType.LAZY,
         cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<IngredientEntity> ingredients;
 
-    @Transient
     private boolean isNew = false;
 }
