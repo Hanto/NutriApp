@@ -13,5 +13,5 @@ public class Food {
 
     private final FoodPer100GramsId id;
     private final FoodName name;
-    private final List<Nutrient> nutrients;
+    private final List<TotalNutrient> nutrients;
 }

@@ -19,14 +19,14 @@ public class USDAClient {
     private final Logger log = LoggerFactory.getLogger(USDAClient.class);
 
 
-    public FoodByIdEntity findBy(FoodPer100GramsId id) {
+    public FoodByIdResponse findBy(FoodPer100GramsId id) {
 
         var url = configuration.getBaseUrl() + configuration.getGetFoodByIdEndpoint() + id.getValue() + "?api_key=" + configuration.getApiKey();
         var payload = new HttpEntity<>(null, baseHeaders());
 
         log.info("calling the USDA: {}", url);
 
-        return restTemplate.exchange(url, HttpMethod.GET, payload, FoodByIdEntity.class).getBody();
+        return restTemplate.exchange(url, HttpMethod.GET, payload, FoodByIdResponse.class).getBody();
     }
 
     /*@Retryable(

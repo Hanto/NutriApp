@@ -8,18 +8,18 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor @ToString @Getter
-public class Nutrient {
+public class TotalNutrient {
 
     private final NutrientId nutrientId;
     private final NutrientName name;
     private final Quantity quantity;
 
-    public Nutrient plus(Nutrient nutrient) {
+    public TotalNutrient plus(TotalNutrient nutrient) {
 
         if (nutrientId.equals(nutrient.nutrientId)) {
 
             var totalQuantity = quantity.plus(nutrient.getQuantity());
-            return new Nutrient(nutrientId, name, totalQuantity);
+            return new TotalNutrient(nutrientId, name, totalQuantity);
         }
         else throw new ArithmeticException("Nutrients are not of the same type");
     }

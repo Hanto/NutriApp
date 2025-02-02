@@ -59,7 +59,7 @@ public class USDAClientAdapter {
     // RESPONSE:
     //--------------------------------------------------------------------------------------------------------
 
-    public FoodPer100Grams toDomain(FoodByIdEntity foodEntity) {
+    public FoodPer100Grams toDomain(FoodByIdResponse foodEntity) {
 
         var id = new FoodPer100GramsId(foodEntity.getFdcId());
         var name = new FoodName(foodEntity.getDescription());
@@ -68,7 +68,7 @@ public class USDAClientAdapter {
         return new FoodPer100Grams(id, name, nutrients);
     }
 
-    private NutrientPer100Grams toDomain(FoodByIdEntity.FoodNutrientByIdEntity foodNutrientEntity) {
+    private NutrientPer100Grams toDomain(FoodByIdResponse.FoodNutrientByIdEntity foodNutrientEntity) {
 
         var id = new NutrientPer100GramsId(foodNutrientEntity.getId());
         var nutrientId = new NutrientId(foodNutrientEntity.getNutrient().getId());

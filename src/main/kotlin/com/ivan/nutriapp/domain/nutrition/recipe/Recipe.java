@@ -32,13 +32,13 @@ public class Recipe {
         return new Recipe(id, name, newIngredients);
     }
 
-    public List<Nutrient>nutrients() {
+    public List<TotalNutrient>nutrients() {
 
         return ingredients.stream()
             .flatMap( it -> it.nutrients().stream() )
-            .collect(Collectors.groupingBy(Nutrient::getNutrientId))
+            .collect(Collectors.groupingBy(TotalNutrient::getNutrientId))
             .values().stream()
-            .map(it -> it.stream().reduce(Nutrient::plus).orElseThrow()).toList();
+            .map(it -> it.stream().reduce(TotalNutrient::plus).orElseThrow()).toList();
     }
 
     public Gram weight() {

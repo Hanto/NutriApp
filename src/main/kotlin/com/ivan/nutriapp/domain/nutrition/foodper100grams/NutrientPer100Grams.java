@@ -21,5 +21,4 @@ public class NutrientPer100Grams {
         var percent = grams.divide(new Gram(100f));
         return quantity.applyPercent(percent);
     }
-
 }

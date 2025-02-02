@@ -2,7 +2,7 @@ package com.ivan.nutriapp.infrastructure.resources.recipe;
 
 import com.ivan.nutriapp.domain.nutrition.recipe.Food;
 import com.ivan.nutriapp.domain.nutrition.recipe.Ingredient;
-import com.ivan.nutriapp.domain.nutrition.recipe.Nutrient;
+import com.ivan.nutriapp.domain.nutrition.recipe.TotalNutrient;
 import com.ivan.nutriapp.domain.nutrition.recipe.Recipe;
 
 public class RecipeResourceAdapter {
@@ -33,7 +33,7 @@ public class RecipeResourceAdapter {
             food.getNutrients().stream().map(this::toResource).toList());
     }
 
-    private RecipeDTO.NutrientDTO toResource(Nutrient nutrient) {
+    private RecipeDTO.NutrientDTO toResource(TotalNutrient nutrient) {
 
         return new RecipeDTO.NutrientDTO(
             String.valueOf(nutrient.getNutrientId().getValue()),

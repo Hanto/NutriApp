@@ -9,7 +9,7 @@ import lombok.ToString;
 import java.util.List;
 
 @NoArgsConstructor @AllArgsConstructor @Setter @Getter @ToString
-public class FoodByIdEntity {
+public class FoodByIdResponse {
 
     private Integer fdcId;
     private String description;

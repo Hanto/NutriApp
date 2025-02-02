@@ -2,8 +2,6 @@ package com.ivan.nutriapp.domain.nutrition.recipe;
 
 import com.ivan.nutriapp.domain.nutrition.foodper100grams.FoodPer100Grams;
 import com.ivan.nutriapp.domain.nutrition.Gram;
-import com.ivan.nutriapp.infrastructure.repositories.recipe.IngredientEntity;
-import com.ivan.nutriapp.infrastructure.repositories.recipe.RecipeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -30,11 +28,11 @@ public class Ingredient {
         );
     }
 
-    public List<Nutrient>nutrients() {
+    public List<TotalNutrient>nutrients() {
 
         return foodPer100Grams.getNutrients().stream().map( it ->
 
-            new Nutrient(
+            new TotalNutrient(
                 it.getNutrientId(),
                 it.getName(),
                 it.getQuantityPer(quantity)
